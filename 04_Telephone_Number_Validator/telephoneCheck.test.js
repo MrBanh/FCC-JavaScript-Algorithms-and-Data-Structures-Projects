@@ -7,11 +7,14 @@ test("Validate telephone numbers", () => {
     expect(telephoneCheck("555-555-5555")).toBeTruthy();
     expect(telephoneCheck("(555)555-5555")).toBeTruthy();
     expect(telephoneCheck("1(555)555-5555")).toBeTruthy();
+    expect(telephoneCheck("1 555 555 5555")).toBeTruthy();
+    expect(telephoneCheck("1 456 789 4444")).toBeTruthy();
+})
+
+test("Invalid telephone numbers", () => {
     expect(telephoneCheck("555-5555")).toBeFalsy();
     expect(telephoneCheck("5555555")).toBeFalsy();
     expect(telephoneCheck("1 555)555-5555")).toBeFalsy();
-    expect(telephoneCheck("1 555 555 5555")).toBeTruthy();
-    expect(telephoneCheck("1 456 789 4444")).toBeTruthy();
     expect(telephoneCheck("123**&!!asdf#")).toBeFalsy();
     expect(telephoneCheck("55555555")).toBeFalsy();
     expect(telephoneCheck("(6054756961)")).toBeFalsy();
