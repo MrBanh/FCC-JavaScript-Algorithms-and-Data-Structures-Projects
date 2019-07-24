@@ -11,8 +11,23 @@ All letters will be uppercase. Do not transform any non-alphabetic character (i.
 */
 
 function rot13(str) { // LBH QVQ VG!
+    let resultStr = [];
+    const letterRegex = /[A-Z]/;
 
-    return str;
+    for (let c of str) {
+        if (!letterRegex.test(c)) {
+            // Convert non-alphabetic characters to ascii and push to array
+            resultStr.push(c.charCodeAt());
+        } else {
+            // Convert alphabetic characters to ascii and subtract 13 to decode
+            let decodeAscii = c.charCodeAt() - 13;
+            // Push decoded ascii value to array; test if it is < 65 (65 = 'A')
+            resultStr.push(decodeAscii < 65 ? 91 - (65 - decodeAscii) : decodeAscii);
+        }
+    }
+
+    // Convert all ascii values back to character
+    return String.fromCharCode(...resultStr);
 }
 
 
