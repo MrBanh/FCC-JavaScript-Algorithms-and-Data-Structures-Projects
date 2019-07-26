@@ -18,8 +18,13 @@ Return true if the string is a valid US phone number; otherwise return false.
 */
 
 function telephoneCheck(str) {
-    // Good luck!
-    return true;
+    const phoneRegex = /((?:1\s*)?(?:(?:\(\d{3}\))|\d{3})(?:\s|-)?\d{3}(?:\s|-)?\d{4})/g;
+    const matched = phoneRegex.exec(str);
+    if (matched != null) {
+        return matched[0].length === str.length;
+    } else {
+        return false;
+    }
 }
 
 module.exports = telephoneCheck;
