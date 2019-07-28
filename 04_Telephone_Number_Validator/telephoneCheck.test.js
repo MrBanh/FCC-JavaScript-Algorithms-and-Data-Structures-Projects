@@ -9,7 +9,7 @@ test("Validate telephone numbers", () => {
     expect(telephoneCheck("1(555)555-5555")).toBeTruthy();
     expect(telephoneCheck("1 555 555 5555")).toBeTruthy();
     expect(telephoneCheck("1 456 789 4444")).toBeTruthy();
-})
+});
 
 test("Invalid telephone numbers", () => {
     expect(telephoneCheck("555-5555")).toBeFalsy();
@@ -30,4 +30,4 @@ test("Invalid telephone numbers", () => {
     expect(telephoneCheck("555)-555-5555")).toBeFalsy();
     expect(telephoneCheck("(555-555-5555")).toBeFalsy();
     expect(telephoneCheck("(555)5(55?)-5555")).toBeFalsy();
-})
+});

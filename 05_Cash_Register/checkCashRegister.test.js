@@ -1,33 +1,38 @@
 const checkCashRegister = require("./index");
 
 test("Return correct status and Cash Register balance", () => {
-    expect(checkCashRegister(19.5, 20, [
-        ["PENNY", 1.01],
-        ["NICKEL", 2.05],
-        ["DIME", 3.1],
-        ["QUARTER", 4.25],
-        ["ONE", 90],
-        ["FIVE", 55],
-        ["TEN", 20],
-        ["TWENTY", 60],
-        ["ONE HUNDRED", 100]
-    ])).toContainEqual({
+    expect(
+        checkCashRegister(19.5, 20, [
+            ["PENNY", 1.01],
+            ["NICKEL", 2.05],
+            ["DIME", 3.1],
+            ["QUARTER", 4.25],
+            ["ONE", 90],
+            ["FIVE", 55],
+            ["TEN", 20],
+            ["TWENTY", 60],
+            ["ONE HUNDRED", 100],
+        ]),
+    ).toStrictEqual({
         status: "OPEN",
         change: [
             ["QUARTER", 0.5]
-        ]
-    })
-    expect(checkCashRegister(3.26, 100, [
-        ["PENNY", 1.01],
-        ["NICKEL", 2.05],
-        ["DIME", 3.1],
-        ["QUARTER", 4.25],
-        ["ONE", 90],
-        ["FIVE", 55],
-        ["TEN", 20],
-        ["TWENTY", 60],
-        ["ONE HUNDRED", 100]
-    ])).toContainEqual({
+        ],
+    });
+
+    expect(
+        checkCashRegister(3.26, 100, [
+            ["PENNY", 1.01],
+            ["NICKEL", 2.05],
+            ["DIME", 3.1],
+            ["QUARTER", 4.25],
+            ["ONE", 90],
+            ["FIVE", 55],
+            ["TEN", 20],
+            ["TWENTY", 60],
+            ["ONE HUNDRED", 100],
+        ]),
+    ).toStrictEqual({
         status: "OPEN",
         change: [
             ["TWENTY", 60],
@@ -36,48 +41,57 @@ test("Return correct status and Cash Register balance", () => {
             ["ONE", 1],
             ["QUARTER", 0.5],
             ["DIME", 0.2],
-            ["PENNY", 0.04]
-        ]
-    })
-    expect(checkCashRegister(19.5, 20, [
-        ["PENNY", 0.01],
-        ["NICKEL", 0],
-        ["DIME", 0],
-        ["QUARTER", 0],
-        ["ONE", 0],
-        ["FIVE", 0],
-        ["TEN", 0],
-        ["TWENTY", 0],
-        ["ONE HUNDRED", 0]
-    ])).toContainEqual({
+            ["PENNY", 0.04],
+        ],
+    });
+
+    expect(
+        checkCashRegister(19.5, 20, [
+            ["PENNY", 0.01],
+            ["NICKEL", 0],
+            ["DIME", 0],
+            ["QUARTER", 0],
+            ["ONE", 0],
+            ["FIVE", 0],
+            ["TEN", 0],
+            ["TWENTY", 0],
+            ["ONE HUNDRED", 0],
+        ]),
+    ).toStrictEqual({
         status: "INSUFFICIENT_FUNDS",
-        change: []
-    })
-    expect(checkCashRegister(19.5, 20, [
-        ["PENNY", 0.01],
-        ["NICKEL", 0],
-        ["DIME", 0],
-        ["QUARTER", 0],
-        ["ONE", 1],
-        ["FIVE", 0],
-        ["TEN", 0],
-        ["TWENTY", 0],
-        ["ONE HUNDRED", 0]
-    ])).toContainEqual({
+        change: [],
+    });
+
+    expect(
+        checkCashRegister(19.5, 20, [
+            ["PENNY", 0.01],
+            ["NICKEL", 0],
+            ["DIME", 0],
+            ["QUARTER", 0],
+            ["ONE", 1],
+            ["FIVE", 0],
+            ["TEN", 0],
+            ["TWENTY", 0],
+            ["ONE HUNDRED", 0],
+        ]),
+    ).toStrictEqual({
         status: "INSUFFICIENT_FUNDS",
-        change: []
-    })
-    expect(checkCashRegister(19.5, 20, [
-        ["PENNY", 0.5],
-        ["NICKEL", 0],
-        ["DIME", 0],
-        ["QUARTER", 0],
-        ["ONE", 0],
-        ["FIVE", 0],
-        ["TEN", 0],
-        ["TWENTY", 0],
-        ["ONE HUNDRED", 0]
-    ])).toContainEqual({
+        change: [],
+    });
+
+    expect(
+        checkCashRegister(19.5, 20, [
+            ["PENNY", 0.5],
+            ["NICKEL", 0],
+            ["DIME", 0],
+            ["QUARTER", 0],
+            ["ONE", 0],
+            ["FIVE", 0],
+            ["TEN", 0],
+            ["TWENTY", 0],
+            ["ONE HUNDRED", 0],
+        ]),
+    ).toStrictEqual({
         status: "CLOSED",
         change: [
             ["PENNY", 0.5],
@@ -88,7 +102,7 @@ test("Return correct status and Cash Register balance", () => {
             ["FIVE", 0],
             ["TEN", 0],
             ["TWENTY", 0],
-            ["ONE HUNDRED", 0]
-        ]
-    })
+            ["ONE HUNDRED", 0],
+        ],
+    });
 });
